@@ -8,7 +8,7 @@ router.post('/register', function (req, res, next) {
   var data = req.body;
   db.findDocuments({ email: data.email }, 'users').then(result => {
     if (result.length > 0) {
-      res.json({ ok: false, message: 'Email đã tồn tại' })
+      res.json({ ok: false })
     } else {
       db.insertDocument(data, 'users')
         .then(result => {
