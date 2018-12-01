@@ -22,4 +22,14 @@ router.get('/:id', function (req, res, next) {
             console.log(error);
         })
 });
+// CREATE A PRODUCT
+router.post('./add', function (req, res, next) {
+    var data = reg.body;
+    db.insertDocument(data, 'products')
+        .then(result => {
+            res.status(200).json(result);
+        }).catch(error => {
+            console.log(error);
+        })
+})
 module.exports = router;
